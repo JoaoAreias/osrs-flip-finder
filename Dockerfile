@@ -3,7 +3,9 @@ FROM python:3.10
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
+ENV PORT=8080
+
 COPY . /app
 WORKDIR /app
 
-CMD ["streamlit", "run",  "src/main.py", "--server.port", $PORT]
+ENTRYPOINT [ "/bin/bash", "-c", "./entrypoint.sh" ]
