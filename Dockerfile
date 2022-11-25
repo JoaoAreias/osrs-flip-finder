@@ -8,4 +8,5 @@ ENV PORT=8080
 COPY . /app
 WORKDIR /app
 
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
 ENTRYPOINT [ "/bin/bash", "-c", "./entrypoint.sh" ]
