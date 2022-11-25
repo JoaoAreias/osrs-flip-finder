@@ -6,4 +6,4 @@ RUN pip install -r /tmp/requirements.txt
 COPY . /app
 WORKDIR /app
 
-CMD ["streamlit", "run",  "src/main.py"]
+CMD ["streamlit", "run",  "src/main.py", "--server.port", "80"]
