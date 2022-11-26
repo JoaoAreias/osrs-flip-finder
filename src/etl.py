@@ -38,10 +38,6 @@ def add_item_volume(data: pd.DataFrame) -> pd.DataFrame:
         right_on="id",
     ).drop(columns="id")
 
-
-def filter_by_volume(data: pd.DataFrame) -> pd.DataFrame:
-    return data[data["volume"] > config.min_volume]
-
 def filter_by_price(data: pd.DataFrame) -> pd.DataFrame:
     return data[
         (data["low"] > config.min_price) &
@@ -58,14 +54,7 @@ def sort_by_margin(data: pd.DataFrame) -> pd.DataFrame:
     return data.sort_values("margin_pct", ascending=False)
 
 
-def format_data(data: pd.DataFrame) -> pd.DataFrame:
-    data =  data[["name", "high", "low", "margin_pct", "volume"]]
-    data["margin_pct"] = data["margin_pct"].map("{:.2%}".format)
-    data["volume"] = data["volume"].map("{:,}".format)
-    data['high'] = data['high'].map('{:,.0f}'.format)
-    data['low'] = data['low'].map('{:,.0f}'.format)
 
-    return data
 
 pipeline = make_pipeline(
     api_requests.get_data,
@@ -74,8 +63,6 @@ pipeline = make_pipeline(
     filter_by_price,
     add_item_names,
     add_item_volume,
-    filter_by_volume,
     add_margin_pct,
-    sort_by_margin,
-    format_data
+    sort_by_margin
 )

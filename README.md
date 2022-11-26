@@ -1,9 +1,11 @@
 # osrs-flip-finder
+
 Uses the OSRS wiki API to find profitable flips on old school runescape.
 
+## Demo
 
-# Demo
-Checkout the demo here: 
+---
 
-- https://osrs-flip-finder-production.up.railway.app/
+Checkout the demo here:
 
+- <https://osrs-flip-finder-production.up.railway.app/>

@@ -8,6 +8,8 @@ from pathlib import Path
 DATA_PATH = Path(__file__).parent.parent / 'data'
 MAPPING_PATH = DATA_PATH / 'mapping.csv'
 VOLUME_PATH = DATA_PATH / 'volumes.csv'
+CONTENT_PATH = DATA_PATH / 'content'
+
 
 # Config file
 _config = ConfigModel.parse_file(DATA_PATH / 'config.json')

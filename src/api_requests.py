@@ -5,6 +5,8 @@ import requests
 import config
 import pandas as pd
 
+from time import sleep
+
 
 def make_request(url: str, json: bool = True) -> dict:
     response = requests.get(
@@ -38,4 +40,5 @@ def get_data(url: str) -> pd.DataFrame:
     data["lowTime"] = pd.to_datetime(data["lowTime"], unit="s")
     data.index = pd.to_numeric(data.index)
 
+    
     return data

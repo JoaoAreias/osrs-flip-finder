@@ -7,12 +7,8 @@
             "volumes": "/volumes"
         }
     },
-    "refresh_rate": 60,
+    "refresh_rate": 10,
 
     "inactive_threshold": 1,
-    "tax_rate": 0.01,
-
-    "min_volume": 100000,
-    "min_price": 1000,
-    "max_price": 20000000
+    "tax_rate": 0.01
 }
