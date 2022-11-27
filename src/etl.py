@@ -31,14 +31,13 @@ def add_item_names(data: pd.DataFrame) -> pd.DataFrame:
         config.ITEM_MAPPING[["id", "name"]],
         left_index=True,
         right_on="id",
-    ).drop(columns="id")
+    )
 
 def add_item_volume(data: pd.DataFrame) -> pd.DataFrame:
     return data.merge(
         config.VOLUME,
-        left_index=True,
-        right_on="id",
-    ).drop(columns="id")
+        on='id'
+    )
 
 def filter_by_price(data: pd.DataFrame) -> pd.DataFrame:
     return data[
