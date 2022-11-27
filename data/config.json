@@ -7,7 +7,7 @@
             "volumes": "/volumes"
         }
     },
-    "refresh_rate": 10,
+    "refresh_rate": 60,
 
     "inactive_threshold": 1,
     "tax_rate": 0.01

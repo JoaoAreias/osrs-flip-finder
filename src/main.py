@@ -1,5 +1,6 @@
 import config
 import etl
+import api_requests
 import streamlit as st
 import pandas as pd
 
@@ -7,6 +8,7 @@ from typing import Dict
 from st_aggrid import AgGrid, GridOptionsBuilder
 from streamlit_autorefresh import st_autorefresh
 
+st.set_page_config(page_title="OSRS flip finder")
 st_autorefresh(config.refresh_rate * 1000)
 
 
@@ -14,6 +16,11 @@ st_autorefresh(config.refresh_rate * 1000)
 def load_data():
     data = etl.pipeline(config.api.latest)
     return data
+
+@st.cache(ttl=24 * 60 * 60)
+def refresh_volume():
+    api_requests.refresh_volume()
+
 
 def load_content():
     content = {}
