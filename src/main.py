@@ -4,9 +4,12 @@ import api_requests
 import streamlit as st
 import pandas as pd
 
+import streamlit.components.v1 as components
+
 from typing import Dict
 from st_aggrid import AgGrid, GridOptionsBuilder
 from streamlit_autorefresh import st_autorefresh
+
 
 st.set_page_config(page_title="OSRS flip finder")
 st_autorefresh(config.refresh_rate * 1000)
@@ -54,9 +57,12 @@ def format_data(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 content = load_content()
-data = load_data()
 
 st.markdown(content['intro'])
+components.html("""
+    <div style="text-align: center; margin: 0px">
+<a href="https://www.buymeacoffee.com/joaoareias7" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
+    </div>""", height=60)
 
 with st.sidebar:
     st.markdown('## Volume')
