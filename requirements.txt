@@ -3,4 +3,3 @@ streamlit-aggrid==0.3.3
 streamlit-autorefresh==0.0.1
 pydantic==1.10.2
 pandas==1.5.2
-beautifulsoup4==4.10.0
