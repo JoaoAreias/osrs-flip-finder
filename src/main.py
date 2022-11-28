@@ -3,6 +3,7 @@ import etl
 import api_requests
 import streamlit as st
 import pandas as pd
+import warnings
 
 import streamlit.components.v1 as components
 
@@ -53,16 +54,21 @@ def format_data(data: pd.DataFrame) -> pd.DataFrame:
     )
     grid_options.configure_column("margin_pct", editable=False, type="numericColumn", valueFormatter="x.toLocaleString('en-US', {style: 'percent'})")
     
-    data = AgGrid(data, gridOptions=grid_options.build())
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        data = AgGrid(data, gridOptions=grid_options.build())
+    
     return data
 
 content = load_content()
 
 st.markdown(content['intro'])
 components.html("""
-    <div style="text-align: center; margin: 0px">
-<a href="https://www.buymeacoffee.com/joaoareias7" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
-    </div>""", height=60)
+<div style="text-align: center; margin: 0px">
+    <a href="https://www.buymeacoffee.com/joaoareias7" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" >
+    </a>
+</div>""", height=60)
 
 with st.sidebar:
     st.markdown('## Volume')
