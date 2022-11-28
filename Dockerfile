@@ -3,9 +3,8 @@ FROM python:3.10
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
-COPY ./build-scripts /tmp/build-scripts
 ENV GOOGLE_ANALYTICS_ID=""
-RUN ["python", "/tmp/build-scripts/inject_google_analytics.py"]
+COPY ./setup-scripts /setup-scripts
 
 ENV PORT=8080
 
