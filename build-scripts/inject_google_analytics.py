@@ -9,6 +9,7 @@ import streamlit as st
 from bs4 import BeautifulSoup
 
 
+print("Injecting Google Analytics into Streamlit static files...")
 STATIC_FILE = pathlib.Path(st.__path__[0]) / "static" / "index.html"
 
 script = f"""
