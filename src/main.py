@@ -87,3 +87,15 @@ filters = {
 data = load_data()
 filtered_data = apply_ui_filters(data, filters)
 ag_grid = format_data(filtered_data)
+
+components.html("""
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W6W4DL1THR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W6W4DL1THR');
+</script>
+""", height=0, width=0)
