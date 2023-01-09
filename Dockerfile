@@ -4,7 +4,6 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 ENV GOOGLE_ANALYTICS_ID=""
-COPY ./setup-scripts /setup-scripts
 
 ENV PORT=8080
 
