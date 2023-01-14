@@ -204,9 +204,9 @@ Some nicely cooked anchovies.,319,False,6.0,15000.0,15,9.0,Anchovies.png,Anchovi
 A pizza with anchovies.,2297,False,24.0,10000.0,60,36.0,Anchovy pizza.png,Anchovy pizza
 "The misery that is now upon us is but the passing of greed, the bitterness of those who fear the way of progress.",20235,True,32.0,5.0,80,48.0,Ancient blessing.png,Ancient blessing
 Ancient blessed dragonhide vambraces.,12490,True,1600.0,8.0,4000,2400.0,Ancient bracers.png,Ancient bracers
-1 dose of Ancient brew.,26346,True,50.0,,125,75.0,Ancient brew(1).png,Ancient brew(1)
-2 doses of Ancient brew.,26344,True,60.0,,150,90.0,Ancient brew(2).png,Ancient brew(2)
-3 doses of Ancient brew.,26342,True,70.0,,175,105.0,Ancient brew(3).png,Ancient brew(3)
+1 dose of Ancient brew.,26346,True,50.0,2000.0,125,75.0,Ancient brew(1).png,Ancient brew(1)
+2 doses of Ancient brew.,26344,True,60.0,2000.0,150,90.0,Ancient brew(2).png,Ancient brew(2)
+3 doses of Ancient brew.,26342,True,70.0,2000.0,175,105.0,Ancient brew(3).png,Ancient brew(3)
 4 doses of Ancient brew.,26340,True,80.0,2000.0,200,120.0,Ancient brew(4).png,Ancient brew(4)
 Some ceremonial boots dedicated to an ancient god.,26229,True,16000.0,8.0,40000,24000.0,Ancient ceremonial boots.png,Ancient ceremonial boots
 Some ceremonial gloves dedicated to an ancient god.,26227,True,16000.0,8.0,40000,24000.0,Ancient ceremonial gloves.png,Ancient ceremonial gloves
@@ -224,6 +224,7 @@ Ancient blessed wooden shield covered in dragon leather.,23197,True,11333.0,8.0,
 "A set containing an ancient dragonhide coif, body, chaps and bracers.",13171,True,3800.0,8.0,9500,5700.0,Ancient dragonhide set.png,Ancient dragonhide set
 "A mysterious artifact of ancient times, very precious to emblem traders.",22302,True,3200000.0,250.0,8000000,4800000.0,Ancient effigy.png,Ancient effigy
 "A mysterious artifact of ancient times, of some value to emblem traders.",21807,True,200000.0,250.0,500000,300000.0,Ancient emblem.png,Ancient emblem
+Pure magical energy filled with a dark power.,27616,True,1.0,300000.0,1,1.0,Ancient essence.png,Ancient essence
 Rune full helmet in the colours of a long-forgotten god.,12466,False,14080.0,8.0,35200,21120.0,Ancient full helm.png,Ancient full helm
 "A mysterious, heavy sword.",26233,True,500000.0,,1250000,750000.0,Ancient godsword.png,Ancient godsword
 Brimming with potential.,26370,True,200000.0,,500000,300000.0,Ancient hilt.png,Ancient hilt
@@ -610,7 +611,7 @@ An ethereal shield that has been blessed with holy powers.,12831,True,480000.0,8
 "Enough power for a Bind, blighted so it can be used only in the Wilderness.",24609,True,1.0,10000.0,1,1.0,Blighted bind sack.png,Blighted bind sack
 "Enough power for an Entangle, blighted so it can be used only in the Wilderness.",24613,True,1.0,10000.0,1,1.0,Blighted entangle sack.png,Blighted entangle sack
 "A nutritious octopus, now blighted so it can be eaten only in the Wilderness.",24595,True,1.0,,1,1.0,Blighted karambwan.png,Blighted karambwan
-"A rare catch, now blighted so it can be eaten only in the Wilderness.",24589,True,1.0,12000.0,1,1.0,Blighted manta ray.png,Blighted manta ray
+"A rare catch, now blighted so it can be eaten only in the Wilderness.",24589,True,1.0,10000.0,1,1.0,Blighted manta ray.png,Blighted manta ray
 "Enough power for a Snare, blighted so it can be used only in the Wilderness.",24611,True,1.0,10000.0,1,1.0,Blighted snare sack.png,Blighted snare sack
 "4 doses of super restore potion, blighted so it can be used only in the Wilderness.",24598,True,1.0,2000.0,1,1.0,Blighted super restore(4).png,Blighted super restore(4)
 "Enough power for a Teleblock or a Teleport to Target, blighted so it can be used only in the Wilderness.",24615,True,1.0,10000.0,1,1.0,Blighted teleport spell sack.png,Blighted teleport spell sack
@@ -861,7 +862,7 @@ This is the largest fruit I've ever seen.,5980,True,21.0,11000.0,54,32.0,Calquat
 Sliced and hollowed out to form a keg.,5769,True,1.0,10000.0,1,1.0,Calquat keg.png,Calquat keg
 This sapling is ready to be replanted in a Calquat Tree patch.,5503,True,1.0,200.0,1,1.0,Calquat sapling.png,Calquat sapling
 Plant in a plantpot of soil to grow a sapling.,5290,True,136.0,200.0,340,204.0,Calquat tree seed 5.png,Calquat tree seed
-A teleport to Camelot.,8010,True,1.0,10000.0,1,1.0,Camelot teleport (tablet).png,Camelot teleport (tablet)
+A teleport to Camelot.,8010,True,1.0,15000.0,1,1.0,Camelot teleport (tablet).png,Camelot teleport (tablet)
 A candle.,36,True,1.0,40.0,3,1.0,Candle.png,Candle
 A candle in a glass cage.,4532,True,6.0,100.0,15,9.0,Candle lantern (black).png,Candle lantern (black)
 A candle in a glass cage.,4529,True,6.0,40.0,15,9.0,Candle lantern (white).png,Candle lantern (white)
@@ -1419,6 +1420,10 @@ A tattered chunk of dagannoth hide.,6171,True,24.0,11000.0,60,36.0,Flattened hid
 I should use this with a spinning wheel.,1779,True,2.0,13000.0,5,3.0,Flax.png,Flax
 A wooden arrow shaft with four flights attached.,2865,True,1.0,7000.0,1,1.0,Flighted ogre arrow 5.png,Flighted ogre arrow
 Useful for catching salmon or trout.,309,False,2.0,40.0,5,3.0,Fly fishing rod.png,Fly fishing rod
+1 dose of forgotten brew.,27638,True,1.0,,1,1.0,Forgotten brew(1).png,Forgotten brew(1)
+2 doses of forgotten brew.,27635,True,1.0,,1,1.0,Forgotten brew(2).png,Forgotten brew(2)
+3 doses of forgotten brew.,27632,True,1.0,,1,1.0,Forgotten brew(3).png,Forgotten brew(3)
+4 doses of forgotten brew.,27629,True,1.0,,1,1.0,Forgotten brew(4).png,Forgotten brew(4)
 How does it all fit in there?,8586,True,4.0,500.0,10,6.0,Four-poster bed (flatpack).png,Four-poster bed (flatpack)
 The latest in Fremennik fashion.,3771,True,100.0,150.0,250,150.0,Fremennik beige shirt.png,Fremennik beige shirt
 The latest fashion in Rellekka.,3789,True,100.0,150.0,250,150.0,Fremennik black cloak.png,Fremennik black cloak
@@ -1969,7 +1974,7 @@ Linked tuxedo cuffs with a gold trim.,19976,True,1200.0,4.0,3000,1800.0,Light tu
 A light tuxedo jacket with a matching shirt.,19973,True,4000.0,4.0,10000,6000.0,Light tuxedo jacket.png,Light tuxedo jacket
 Light shoes to match your light tuxedo.,19982,True,1200.0,4.0,3000,1800.0,Light tuxedo shoes.png,Light tuxedo shoes
 A heavy ring that glimmers with a strange power.,25975,True,1.0,8.0,1,1.0,Lightbearer.png,Lightbearer
-A beautiful lily.,27272,True,1.0,,1,1.0,Lily of the sands.png,Lily of the sands
+A beautiful lily.,27272,True,1.0,13000.0,1,1.0,Lily of the sands.png,Lily of the sands
 A fresh lime.,2120,True,1.0,13000.0,2,1.0,Lime.png,Lime
 Fresh chunks of lime.,2122,True,1.0,13000.0,1,1.0,Lime chunks.png,Lime chunks
 Fresh lime slices.,2124,True,1.0,13000.0,2,1.0,Lime slices.png,Lime slices
@@ -3656,6 +3661,8 @@ That used to be a vampyre!,3325,True,1.0,11000.0,2,1.0,Vampyre dust.png,Vampyre 
 A teleport to Varrock.,8007,True,1.0,10000.0,1,1.0,Varrock teleport (tablet).png,Varrock teleport (tablet)
 This looks pretty healthy.,2195,True,1.0,6000.0,2,1.0,Veg ball.png,Veg ball
 Well... it looks healthy.,2281,True,1.0,6000.0,2,1.0,Vegetable batta.png,Vegetable batta
+A bow used by hunters from a forgotten empire.,27612,True,1.0,,1,1.0,Venator bow (uncharged).png,Venator bow (uncharged)
+A broken shard of an ancient weapon.,27614,True,1.0,8.0,1,1.0,Venator shard.png,Venator shard
 "A set containing a Verac's helm, plateskirt, brassard and flail.",12875,True,160000.0,8.0,400000,240000.0,Verac's armour set.png,Verac's armour set
 Verac the Defiled's brassard.,4757,True,112000.0,15.0,280000,168000.0,Verac's brassard.png,Verac's brassard
 Verac the Defiled's brassard.,4992,True,112000.0,15.0,280000,168000.0,Verac's brassard 0.png,Verac's brassard 0
@@ -3812,7 +3819,7 @@ It actually smells quite good.,2191,True,1.0,6000.0,2,1.0,Worm hole.png,Worm hol
 Far too small to wear.,5024,True,200.0,150.0,500,300.0,Woven top (brown).png,Woven top (brown)
 "Yellow top, too small for me.",5026,True,250.0,150.0,625,375.0,Woven top (yellow).png,Woven top (yellow)
 Oomlie meat in a palm leaf pouch. It just needs to be cooked.,2341,True,6.0,15.0,16,9.0,Wrapped oomlie.png,Wrapped oomlie
-Used for very high level missile spells.,21880,True,200.0,15000.0,500,300.0,Wrath rune.png,Wrath rune
+Used for very high level missile spells.,21880,True,200.0,25000.0,500,300.0,Wrath rune.png,Wrath rune
 A mysterious power emanates from the talisman...,22118,True,1.0,11000.0,4,2.0,Wrath talisman.png,Wrath talisman
 A tiara infused with the properties of wrath.,22121,True,200.0,40.0,500,300.0,Wrath tiara.png,Wrath tiara
 I wonder how Wyrms have bones...,22780,True,64.0,7500.0,160,96.0,Wyrm bones.png,Wyrm bones
