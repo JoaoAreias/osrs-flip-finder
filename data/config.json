@@ -10,5 +10,6 @@
     "refresh_rate": 60,
 
     "inactive_threshold": 1,
-    "tax_rate": 0.01
+    "tax_rate": 0.01,
+    "tax_threshold": 5000000
 }

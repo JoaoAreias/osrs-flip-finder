@@ -1,6 +1,7 @@
 import config
 import api_requests
 import pandas as pd
+import numpy as np
 
 from functools import reduce
 
@@ -20,9 +21,13 @@ def filter_inactive(data: pd.DataFrame) -> pd.DataFrame:
     ]
 
 def filter_unprofitable(data: pd.DataFrame) -> pd.DataFrame:
-    data["margin"] = data["high"] * (
-        1 - config.tax_rate * (data["high"] > 100)
-    ) - data["low"]
+    due_to_tax = np.clip(
+        data["high"] * config.tax_rate * (data["high"] > 100),
+        0,
+        config.tax_threshold
+    )
+    
+    data["margin"] = data["high"] - due_to_tax - data["low"]
     return data[data["margin"] > 0]
 
 
