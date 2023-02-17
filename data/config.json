@@ -7,6 +7,7 @@
             "volumes": "/volumes"
         }
     },
+    "ge_prices": "https://chisel.weirdgloop.org/gazproj/gazbot/os_dump.json",
     "refresh_rate": 60,
 
     "inactive_threshold": 1,

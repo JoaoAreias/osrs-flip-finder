@@ -17,5 +17,5 @@ class ConfigModel(BaseModel):
     tax_rate: float = 0.01
 
     min_volume: int = 1000
-    min_price: int = 0
-    max_price: int = 20000000
+    tax_threshold: int = 5000000
+    ge_prices: str

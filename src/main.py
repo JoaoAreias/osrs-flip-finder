@@ -7,7 +7,7 @@ import warnings
 
 import streamlit.components.v1 as components
 
-from typing import Dict
+from typing import Callable, Dict
 from st_aggrid import AgGrid, GridOptionsBuilder
 from streamlit_autorefresh import st_autorefresh
 
@@ -33,21 +33,18 @@ def load_content():
     return content
 
 
-def apply_ui_filters(df: pd.DataFrame, filters: Dict[str, st.slider]) -> pd.DataFrame:
-    for column, filter in filters.items():
-        df = df[
-            (df[column] >= filter[0]) & 
-            (df[column] <= filter[1])
-        ]
-    return df
+def apply_filters(data: pd.DataFrame, filters: Dict[str, Callable]) -> pd.DataFrame:
+    for filter in filters.values():
+        data = filter(data)
+    return data
 
 
 def format_data(data: pd.DataFrame) -> pd.DataFrame:
-    data =  data[["name", "high", "low", "margin_pct", "volume"]]
+    data =  data[["name", "high", "low", "price", "margin_pct", "volume"]]
 
     grid_options = GridOptionsBuilder.from_dataframe(data)
     grid_options.configure_columns(
-        ["high", "low", "volume"], 
+        ["high", "low", "volume", "price"], 
         editable=False,
         type=["numericColumn", "numericColumn", "numericColumn"],
         valueFormatter="x.toLocaleString('en-US')",
@@ -83,13 +80,19 @@ with st.sidebar:
         st.number_input('Maximum price', 0, None, 100000)
     )
 
+    st.markdown('----')
+    free_to_play = st.checkbox('Free to play only', False)
+    bellow_ge_price = st.checkbox('Bellow GE price', False)
+
+
+
 filters = {
-    'volume': volume,
-    'low': price,
-    'high': price,
+    'volume': lambda df: df[(df['volume'] >= volume[0]) & (df['volume'] <= volume[1])],
+    'price': lambda df: df[(df['low'] >= price[0]) & (df['low'] <= price[1]) & (df['high'] >= price[0]) & (df['high'] <= price[1])],
+    'free_to_play': lambda df: df[df['free_to_play'] == True] if free_to_play else df,
+    'bellow_ge_price': lambda df: df[df['high'] < df['price']] if bellow_ge_price else df,
 }
 
-
 data = load_data()
-filtered_data = apply_ui_filters(data, filters)
+filtered_data = apply_filters(data, filters)
 ag_grid = format_data(filtered_data)

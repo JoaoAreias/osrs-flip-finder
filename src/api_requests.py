@@ -5,6 +5,8 @@ import requests
 import config
 import pandas as pd
 
+from tqdm import tqdm
+
 
 def make_request(url: str, json: bool = True) -> dict:
     response = requests.get(
@@ -40,5 +42,24 @@ def get_data(url: str) -> pd.DataFrame:
     data["lowTime"] = pd.to_datetime(data["lowTime"], unit="s")
     data.index = pd.to_numeric(data.index)
 
-    
     return data
+
+
+def get_ge_price(items: list, url: str) -> pd.DataFrame:
+    data = {
+        "name": [],
+        "price": [],
+    }
+
+    dump = make_request(url)
+    for id, item in dump.items():
+        if not id.isdigit():
+            continue
+        
+        item_name = item["name"]
+        item_price = item["price"]
+
+        data["name"].append(item_name)
+        data["price"].append(item_price)
+
+    return pd.DataFrame(data)

@@ -20,6 +20,7 @@ def filter_inactive(data: pd.DataFrame) -> pd.DataFrame:
         (data["lowTime"] > threshold)
     ]
 
+
 def filter_unprofitable(data: pd.DataFrame) -> pd.DataFrame:
     due_to_tax = np.clip(
         data["high"] * config.tax_rate * (data["high"] > 100),
@@ -33,10 +34,17 @@ def filter_unprofitable(data: pd.DataFrame) -> pd.DataFrame:
 
 def add_item_names(data: pd.DataFrame) -> pd.DataFrame:
     return data.merge(
-        config.ITEM_MAPPING[["id", "name"]],
+    config.ITEM_MAPPING[["id", "name", "members"]],
         left_index=True,
         right_on="id",
     )
+
+
+def members_to_free_to_play(data: pd.DataFrame) -> pd.DataFrame:
+    data["members"] = ~data["members"]
+    data.rename(columns={"members": "free_to_play"}, inplace=True)
+    return data
+
 
 def add_item_volume(data: pd.DataFrame) -> pd.DataFrame:
     return data.merge(
@@ -44,11 +52,10 @@ def add_item_volume(data: pd.DataFrame) -> pd.DataFrame:
         on='id'
     )
 
-def filter_by_price(data: pd.DataFrame) -> pd.DataFrame:
-    return data[
-        (data["low"] > config.min_price) &
-        (data["high"] < config.max_price)
-    ]
+
+def imput_ge_prices(data: pd.DataFrame) -> pd.DataFrame:
+    ge_prices = api_requests.get_ge_price(data["name"].tolist(), config.ge_prices)
+    return data.merge(ge_prices, on="name")
 
 
 def add_margin_pct(data: pd.DataFrame) -> pd.DataFrame:
@@ -60,14 +67,13 @@ def sort_by_margin(data: pd.DataFrame) -> pd.DataFrame:
     return data.sort_values("margin_pct", ascending=False)
 
 
-
-
 pipeline = make_pipeline(
     api_requests.get_data,
     filter_inactive,
     filter_unprofitable,
-    filter_by_price,
     add_item_names,
+    imput_ge_prices,
+    members_to_free_to_play,
     add_item_volume,
     add_margin_pct,
     sort_by_margin
