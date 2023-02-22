@@ -44,27 +44,23 @@ def apply_filters(data: pd.DataFrame, filters: Dict[str, Callable]) -> pd.DataFr
 
 
 def format_data(data: pd.DataFrame) -> pd.DataFrame:
-    data =  data[["name", "high", "low", "margin_pct", "price", "volume"]]
+    data =  data[["name", "high", "low", "price", "margin_pct", "volume"]]
 
     grid_options = GridOptionsBuilder.from_dataframe(data)
     grid_options.configure_columns(
         ["high", "low", "volume", "price"], 
         editable=False,
-        type=["numericColumn", "numericColumn", "numericColumn", "numericColumn"],
+        type=["numericColumn", "numericColumn", "numericColumn"],
         valueFormatter="x.toLocaleString('en-US')",
     )
     grid_options.configure_column("margin_pct", editable=False, type="numericColumn", valueFormatter="x.toLocaleString('en-US', {style: 'percent'})")
     
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        data = AgGrid(
-            data, 
-            gridOptions=grid_options.build(), 
-            fit_columns_on_grid_load=True,
-            key="ag_grid"
-        )
+        data = AgGrid(data, gridOptions=grid_options.build())
     
     return data
+
 
 content = load_content()
 
@@ -99,8 +95,8 @@ with st.sidebar:
 filters = {
     'volume': lambda df: df[(df['volume'] >= volume[0]) & (df['volume'] <= volume[1])],
     'price': lambda df: df[(df['low'] >= price[0]) & (df['low'] <= price[1]) & (df['high'] >= price[0]) & (df['high'] <= price[1])],
-    'free_to_play': lambda df: df[df['free_to_play'] == True] if free_to_play else df,
-    'members': lambda df: df[df['free_to_play'] == False] if free_to_play else df,
+    'free_to_play': lambda df: df[df['members'] == False] if free_to_play else df,
+    'members': lambda df: df[df['members'] == True] if members else df,
     'bellow_ge_price': lambda df: df[df['high'] < df['price']] if bellow_ge_price else df,
 }
 

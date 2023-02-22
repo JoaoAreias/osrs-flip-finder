@@ -40,12 +40,6 @@ def add_item_names(data: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def members_to_free_to_play(data: pd.DataFrame) -> pd.DataFrame:
-    data["members"] = ~data["members"]
-    data.rename(columns={"members": "free_to_play"}, inplace=True)
-    return data
-
-
 def add_item_volume(data: pd.DataFrame) -> pd.DataFrame:
     return data.merge(
         config.VOLUME,
@@ -73,7 +67,6 @@ pipeline = make_pipeline(
     filter_unprofitable,
     add_item_names,
     imput_ge_prices,
-    members_to_free_to_play,
     add_item_volume,
     add_margin_pct,
     sort_by_margin
