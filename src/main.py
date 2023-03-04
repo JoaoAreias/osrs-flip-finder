@@ -72,6 +72,10 @@ components.html("""
     </a>
 </div>""", height=60)
 
+
+
+data = load_data()
+
 with st.sidebar:
     st.markdown('## Volume')
     volume = (
@@ -85,12 +89,15 @@ with st.sidebar:
         st.number_input('Maximum price', 0, None, 10000000)
     )
 
+    st.markdown('## Margin')
+    minimum_margin = st.slider('Minimum margin', 0., 10., 1., 0.1, format='%.1f%%')
+
     st.markdown('----')
     free_to_play = st.checkbox('Free to play only', False)
     members = st.checkbox("Members only", False)
     bellow_ge_price = st.checkbox('Bellow GE price', False)
 
-
+    
 
 filters = {
     'volume': lambda df: df[(df['volume'] >= volume[0]) & (df['volume'] <= volume[1])],
@@ -98,8 +105,9 @@ filters = {
     'free_to_play': lambda df: df[df['members'] == False] if free_to_play else df,
     'members': lambda df: df[df['members'] == True] if members else df,
     'bellow_ge_price': lambda df: df[df['high'] < df['price']] if bellow_ge_price else df,
+    'minimum_margin': lambda df: df[df['margin_pct'] >= minimum_margin / 100],
 }
 
-data = load_data()
+
 filtered_data = apply_filters(data, filters)
 ag_grid = format_data(filtered_data)
