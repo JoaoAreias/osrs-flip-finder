@@ -9,7 +9,6 @@ import streamlit.components.v1 as components
 
 from typing import Callable, Dict
 from st_aggrid import AgGrid, GridOptionsBuilder
-from streamlit_autorefresh import st_autorefresh
 
 
 st.set_page_config(
@@ -17,7 +16,6 @@ st.set_page_config(
     layout="wide"
 )
 
-st_autorefresh(config.refresh_rate * 1000)
 
 
 @st.cache(ttl=config.refresh_rate, allow_output_mutation=True)
@@ -97,7 +95,12 @@ with st.sidebar:
     members = st.checkbox("Members only", False)
     bellow_ge_price = st.checkbox('Bellow GE price', False)
 
-    
+
+# Refresh Button
+st.markdown('----')
+st.markdown('## Data')
+st.markdown('Please click the button below to refresh the data with the latest flips.')
+st.button('Refresh', on_click=load_data)    
 
 filters = {
     'volume': lambda df: df[(df['volume'] >= volume[0]) & (df['volume'] <= volume[1])],

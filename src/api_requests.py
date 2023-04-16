@@ -5,6 +5,7 @@ import requests
 import config
 import pandas as pd
 
+
 def make_request(url: str, json: bool = True) -> dict:
     response = requests.get(
         url,
