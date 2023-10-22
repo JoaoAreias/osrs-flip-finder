@@ -31,8 +31,13 @@ def refresh_mapping():
 
 def refresh_volume():
     data = make_request(config.api.volumes)
-    volume = pd.DataFrame(data['data'].items(), columns=['id', 'volume'])
+    volume = pd.DataFrame(
+        data['data'].items(),
+        columns=['id', 'volume'],
+        dtype=int
+    )
     volume.to_csv(config.VOLUME_PATH, index=False)
+
     config.VOLUME = volume
 
 
