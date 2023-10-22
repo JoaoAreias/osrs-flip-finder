@@ -17,6 +17,13 @@ st.set_page_config(
 )
 
 
+@st.cache(ttl=24 * 60 * 60 * 7)
+def refresh_volume_and_mapping():
+    # This should be executed once a week
+    api_requests.refresh_volume()
+    api_requests.refresh_mapping()
+
+
 
 @st.cache(ttl=config.refresh_rate, allow_output_mutation=True)
 def load_data():
@@ -105,8 +112,8 @@ st.button('Refresh', on_click=load_data)
 filters = {
     'volume': lambda df: df[(df['volume'] >= volume[0]) & (df['volume'] <= volume[1])],
     'price': lambda df: df[(df['low'] >= price[0]) & (df['low'] <= price[1]) & (df['high'] >= price[0]) & (df['high'] <= price[1])],
-    'free_to_play': lambda df: df[df['members'] == False] if free_to_play else df,
-    'members': lambda df: df[df['members'] == True] if members else df,
+    'free_to_play': lambda df: df[~df['members']] if free_to_play else df,
+    'members': lambda df: df[df['members']] if members else df,
     'bellow_ge_price': lambda df: df[df['high'] < df['price']] if bellow_ge_price else df,
     'minimum_margin': lambda df: df[df['margin_pct'] >= minimum_margin / 100],
 }
@@ -114,3 +121,7 @@ filters = {
 
 filtered_data = apply_filters(data, filters)
 ag_grid = format_data(filtered_data)
+
+# Setup data
+refresh_volume_and_mapping()
+refresh_volume()

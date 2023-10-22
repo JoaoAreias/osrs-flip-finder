@@ -29,6 +29,15 @@ VOLUME = pd.read_csv(DATA_PATH / 'volumes.csv')
 ITEM_MAPPING = pd.read_csv(DATA_PATH / 'mapping.csv')
 
 
+# Coerce types for the VOLUME dataframe
+VOLUME['id'] = pd.to_numeric(VOLUME['id'])
+VOLUME['volume'] = pd.to_numeric(VOLUME['volume'])
+
+# Coerce types for the ITEM_MAPPING dataframe
+# Not needed right now
+# TODO: Revisit this later
+
+
 # Additional configuration data
 def __getattr__(name: str):
     return _config.__getattribute__(name)

@@ -3,7 +3,11 @@ Handles all requests to the API
 """
 import requests
 import config
+import logging
 import pandas as pd
+
+
+logger = logging.getLogger(__name__)
 
 
 def make_request(url: str, json: bool = True) -> dict:
@@ -48,6 +52,10 @@ def get_ge_price(items: list, url: str) -> pd.DataFrame:
     dump = make_request(url)
     for id, item in dump.items():
         if not id.isdigit():
+            continue
+
+        if "price" not in item:
+            logger.warning(f"Item {item['name']} has no price")
             continue
         
         item_name = item["name"]
