@@ -51,7 +51,7 @@ def filter_unprofitable(data: pd.DataFrame) -> pd.DataFrame:
 @try_or_log
 def add_item_names(data: pd.DataFrame) -> pd.DataFrame:
     return data.merge(
-    config.ITEM_MAPPING[["id", "name", "members"]],
+    config.ITEM_MAPPING[["id", "name", "members", "highalch"]],
         left_index=True,
         right_on="id",
     )
@@ -60,7 +60,7 @@ def add_item_names(data: pd.DataFrame) -> pd.DataFrame:
 def add_item_volume(data: pd.DataFrame) -> pd.DataFrame:
     if config.VOLUME["id"].dtypes == "object":
         config.VOLUME["id"] = pd.to_numeric(config.VOLUME["id"])
-        
+
     return data.merge(
         config.VOLUME,
         on='id'

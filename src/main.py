@@ -49,11 +49,11 @@ def apply_filters(data: pd.DataFrame, filters: Dict[str, Callable]) -> pd.DataFr
 
 
 def format_data(data: pd.DataFrame) -> pd.DataFrame:
-    data =  data[["name", "high", "low", "price", "margin_pct", "volume"]]
+    data =  data[["name", "high", "low", "price", "margin_pct", "highalch", "volume"]]
 
     grid_options = GridOptionsBuilder.from_dataframe(data)
     grid_options.configure_columns(
-        ["high", "low", "volume", "price"], 
+        ["high", "low", "volume", "price", "highalch"], 
         editable=False,
         type=["numericColumn", "numericColumn", "numericColumn"],
         valueFormatter="x.toLocaleString('en-US')",
@@ -97,6 +97,10 @@ with st.sidebar:
     st.markdown('## Margin')
     minimum_margin = st.slider('Minimum margin', 0., 10., 1., 0.1, format='%.1f%%')
 
+    st.markdown('## Bellow High Alch')
+    nature_rune_price = st.number_input('Nature rune price', 0, None, 100)
+    bellow_highalch = st.checkbox('Bellow High Alch', False)
+
     st.markdown('----')
     free_to_play = st.checkbox('Free to play only', False)
     members = st.checkbox("Members only", False)
@@ -116,6 +120,7 @@ filters = {
     'members': lambda df: df[df['members']] if members else df,
     'bellow_ge_price': lambda df: df[df['high'] < df['price']] if bellow_ge_price else df,
     'minimum_margin': lambda df: df[df['margin_pct'] >= minimum_margin / 100],
+    'bellow_highalch': lambda df: df[df['high'] + nature_rune_price < df['highalch']] if bellow_highalch else df,
 }
 
 
