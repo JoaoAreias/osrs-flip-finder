@@ -34,7 +34,7 @@ def refresh_volume():
     volume = pd.DataFrame(
         data['data'].items(),
         columns=['id', 'volume'],
-        dtype=int
+        dtype=pd.Int64Dtype()
     )
     volume.to_csv(config.VOLUME_PATH, index=False)
 
