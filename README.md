@@ -5,4 +5,4 @@ Uses the OSRS wiki API to find profitable flips on old school runescape.
 
 Checkout here:
 
-- <https://main.osrs-flipfinder.com/>
+- <https://osrs-flip-finder-production.up.railway.app/>
